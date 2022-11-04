@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function App() {
     return (
-        <div>App asdfas</div>
+        <div>Ndt @0707</div>
     )
 }

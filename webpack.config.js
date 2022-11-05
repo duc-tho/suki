@@ -4,7 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.tsx',
-    output: { path: path.join(__dirname, 'build', 'dist'), filename: './client/bundle.js' },
+    output: {
+        path: path.join(__dirname, 'build', 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/'
+    },
     mode: process.env.NODE_ENV || 'development',
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
@@ -50,8 +54,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
-            // favicon: './public/favicon.ico'
+            template: './src/client/template/index.html'
         })
     ]
 };

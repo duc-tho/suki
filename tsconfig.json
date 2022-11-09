@@ -18,12 +18,14 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": false,
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        "plugins": [{ "name": "typescript-plugin-css-modules" }],
     },
     "exclude": [
         "src/server"
     ],
     "include": [
-        "src/client/index.tsx"
+        "src/client/index.tsx",
+        "./typings.d.ts"
     ]
 }

@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.tsx',
@@ -34,8 +36,12 @@ module.exports = {
                 use: ['ts-loader']
             },
             {
-                test: /\.(css|scss)$/,
-                use: ['style-loader', 'css-loader']
+                test: /\.(css)$/,
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.(scss|sass)$/,
@@ -47,11 +53,24 @@ module.exports = {
             },
             {
                 test: /\.(jpg|jpeg|png|gif|mp3|svg|woff|woff2|eot|ttf)$/,
-                use: ['file-loader']
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false
+                        }
+                    }
+                ]
             }
         ]
     },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin()
+        ]
+    },
     plugins: [
+        new MiniCssExtractPlugin({ filename: 'app.css' }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/client/template/index.html'

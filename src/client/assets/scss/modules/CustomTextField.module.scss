@@ -1,0 +1,21 @@
+@use '../vars';
+
+.wrap {
+    .input {
+        background-color: vars.$secondaryBackground;
+        border-radius: 7px;
+        box-shadow: vars.$secondaryBackground 0px 0px 12px -2px;
+
+        label {
+            color: vars.$primaryColor;
+        }
+
+        input {
+            color: vars.$primaryHighlight;
+        }
+
+        div fieldset {
+            border-color: transparentize(vars.$primaryHighlight, 0.6) !important;
+        }
+    }
+}

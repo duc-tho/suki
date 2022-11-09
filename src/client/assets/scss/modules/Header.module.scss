@@ -1,0 +1,45 @@
+@use '../vars';
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px 0 10px;
+    box-sizing: border-box;
+    gap: 10px;
+
+    .back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 5px;
+        backdrop-filter: blur(5px) saturate(120%);
+        background: transparentize($color: vars.$primaryBackground, $amount: 0.5);
+
+        .active {
+            fill: vars.$primaryHighlight;
+        }
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 40px;
+        padding: 0 .7rem;
+        white-space: nowrap;
+        border-radius: 5px;
+        flex-grow: 1;
+        backdrop-filter: blur(5px) saturate(120%);
+        background: transparentize($color: vars.$primaryBackground, $amount: 0.5);
+
+        p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

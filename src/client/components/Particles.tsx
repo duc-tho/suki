@@ -7,15 +7,15 @@ import classes from '../assets/scss/modules/Particles.module.scss';
 import clsx from "clsx";
 
 function Particle() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
+    const particlesInit = useCallback(async (engine: Engine) => {
+        await loadFull(engine);
+    }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    // await console.log(container);
-  }, []);
+    const particlesLoaded = useCallback(async (container: Container | undefined) => {
+        // await console.log(container);
+    }, []);
 
-  return (<Particles className={clsx(classes['particle'])} options={ParticlesConfig} init={particlesInit} loaded={particlesLoaded} />);
+    return (<Particles className={clsx(classes.particle)} options={ParticlesConfig} init={particlesInit} loaded={particlesLoaded} />);
 }
 
 export default Particle;

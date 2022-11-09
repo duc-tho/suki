@@ -29,10 +29,10 @@ const BottomNavigation = () => {
         <Navigation
             value={tab}
             onChange={handleChange}
-            className={clsx(classes['stickyNavigation'])}
+            className={clsx(classes.stickyNavigation)}
         >
             <BottomNavigationAction
-                className={clsx(classes['stickyNavigation__button'])}
+                className={clsx(classes.stickyNavigation__button)}
                 component={Link}
                 to={pathMap.home}
                 value={pathMap.home}
@@ -40,7 +40,7 @@ const BottomNavigation = () => {
                 icon={<WindowIcon />}
             />
             <BottomNavigationAction
-                className={clsx(classes['stickyNavigation__button'])}
+                className={clsx(classes.stickyNavigation__button)}
                 component={Link}
                 to={pathMap.tool}
                 value={pathMap.tool}
@@ -48,7 +48,7 @@ const BottomNavigation = () => {
                 icon={<ArchitectureIcon />}
             />
             <BottomNavigationAction
-                className={clsx(classes['stickyNavigation__button'])}
+                className={clsx(classes.stickyNavigation__button)}
                 component={Link}
                 to={pathMap.schedule}
                 value={pathMap.schedule}
@@ -56,7 +56,7 @@ const BottomNavigation = () => {
                 icon={<CalendarMonthIcon />}
             />
             <BottomNavigationAction
-                className={clsx(classes['stickyNavigation__button'])}
+                className={clsx(classes.stickyNavigation__button)}
                 component={Link}
                 to={pathMap.dairy}
                 value={pathMap.dairy}

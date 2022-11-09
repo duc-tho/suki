@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { Master } from '../pages/Master';
 import { ROUTES_INFO } from './RoutesInfo';
+import Home from '../pages/Home';
 
 const {
     HOME, PROFILE, DAIRY, SCHEDULE,
@@ -13,7 +14,7 @@ const routes = (isLoggedIn: boolean) => [
         path: HOME.path,
         element: isLoggedIn ? <Master /> : <Navigate to={`/${LOGIN.path}`} />,
         children: [
-            { index: true, element: <>home</> },
+            { index: true, element: <Home /> },
             { path: PROFILE.path, element: <>profile</> },
             { path: DAIRY.path, element: <>dairy</> },
             { path: SCHEDULE.path, element: <>schedule</> },

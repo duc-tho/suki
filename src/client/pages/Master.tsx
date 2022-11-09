@@ -6,9 +6,9 @@ import BottomNavigation from "../components/BottomNavigation";
 
 export const Master = () => {
     return (
-        <div className={clsx(classes['wrap'])}>
+        <div className={clsx(classes.wrap)}>
             <Header />
-            <div className={clsx(classes['content'])}>
+            <div className={clsx(classes.content)}>
                 <Outlet />
             </div>
             <BottomNavigation />

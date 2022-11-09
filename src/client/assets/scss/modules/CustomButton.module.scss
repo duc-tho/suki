@@ -4,7 +4,7 @@
     .button {
         background-color: vars.$secondaryBackground !important;
         border-radius: 7px;
-        border: transparentize(vars.$primaryHighlight, 0.6) solid 1px;
+        // border: transparentize(vars.$primaryHighlight, 0.6) solid 1px;
         color: vars.$primaryColor;
 
         &:active,

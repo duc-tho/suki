@@ -11,12 +11,13 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
+        "noImplicitAny": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
+        "isolatedModules": false,
         "noEmit": false,
         "jsx": "react-jsx",
         "plugins": [{ "name": "typescript-plugin-css-modules" }],
@@ -25,7 +26,6 @@
         "src/server"
     ],
     "include": [
-        "src/client/index.tsx",
-        "./typings.d.ts"
+        "src/client/**/*"
     ]
 }

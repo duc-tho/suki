@@ -18,17 +18,17 @@ const Loading: FunctionComponent = () => {
     document.onreadystatechange = () => document.readyState === 'complete' && open && dispatch(hide());
 
     return (
-        <div className={clsx(classes['wrap'])}>
+        <div className={clsx(classes.wrap)}>
             <Backdrop
                 sx={{ color: '#FFF', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}
-                className={clsx(classes['loading'])}
+                className={clsx(classes.loading)}
             >
-                <img className={clsx(classes['sticker'], stickerLoaded && classes['active'])}
+                <img className={clsx(classes.sticker, stickerLoaded && classes.active)}
                     src={sticker} alt="Menhera Sticker" onLoad={handleStickerLoad}
                 />
 
-                <div className={clsx(classes['content'])}>
+                <div className={clsx(classes.content)}>
                     <CircularProgress size={12} color="info" />
                     <Typography fontSize={15}>&nbsp;Chờ xíu</Typography>
                 </div>

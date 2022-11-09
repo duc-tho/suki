@@ -16,11 +16,11 @@ const Header: FunctionComponent = () => {
     }
 
     return (
-        <div className={clsx(classes['wrap'])}>
-            <ButtonBase className={clsx(classes['back'])} onClick={handleBackButtonClick}>
-                <HomeIcon className={clsx(currentRoute?.path === ROUTES_INFO.HOME.path && classes['active'])} />
+        <div className={clsx(classes.wrap)}>
+            <ButtonBase className={clsx(classes.back)} onClick={handleBackButtonClick}>
+                <HomeIcon className={clsx(currentRoute?.path === ROUTES_INFO.HOME.path && classes.active)} />
             </ButtonBase>
-            <div className={clsx(classes['title'])}>
+            <div className={clsx(classes.title)}>
                 <Typography>{currentRoute?.name ?? 'Trang không có tiêu đề'}</Typography>
             </div>
         </div>

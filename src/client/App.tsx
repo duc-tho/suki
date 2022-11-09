@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './styles.scss';
 import { useRoutes } from 'react-router-dom';
 import AppBackground from './components/AppBackground';
 import Toast from './components/Toast';
@@ -13,7 +12,7 @@ export const App = () => {
 
     return (
         <>
-            <div className={clsx(classes['app'])}>
+            <div className={clsx(classes.app)}>
                 {routing}
             </div>
             <Loading />

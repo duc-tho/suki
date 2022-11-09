@@ -70,7 +70,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: 'app.css' }),
+        new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/client/template/index.html'

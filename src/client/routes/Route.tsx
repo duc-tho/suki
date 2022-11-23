@@ -2,6 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Master } from '../pages/Master';
 import { ROUTES_INFO } from './RoutesInfo';
 import Home from '../pages/Home';
+import Tool from '../pages/Tool';
 
 const {
     HOME, PROFILE, DAIRY, SCHEDULE,
@@ -22,7 +23,7 @@ const routes = (isLoggedIn: boolean) => [
                 path: TOOL.path,
                 element: <Outlet />,
                 children: [
-                    { index: true, element: <>Tool</> },
+                    { index: true, element: <Tool /> },
                     { path: TIKTOK_DOWNLOADER.path, element: <>tiktok d</> },
                     { path: RANDOM_IMAGE.path, element: <>r image</> },
                 ],

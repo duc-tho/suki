@@ -4,9 +4,8 @@
     height: 100%;
 
     .content {
+        overflow: scroll;
         padding: 1rem;
         flex-grow: 1
     }
-
-    ;
 }

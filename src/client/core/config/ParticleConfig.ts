@@ -53,7 +53,7 @@ export const ParticlesConfig: RecursivePartial<IOptions> = {
         },
         "move": {
             "enable": true,
-            "speed": 2,
+            "speed": 1.5,
             "direction": -50,
             "random": true,
             "straight": true,

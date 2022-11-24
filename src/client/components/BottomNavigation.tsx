@@ -9,21 +9,27 @@ import ArchitectureIcon from '@mui/icons-material/Architecture';
 import clsx from "clsx";
 import { useDispatch, useSelector } from "../store/hooks";
 import { selectNavigationTab, setTab } from "../store/slices/NavigationTabSlice";
+import { ROUTES_INFO } from "../routes/RoutesInfo";
 
 const BottomNavigation = () => {
+    const location = useLocation();
     const { tab } = useSelector(selectNavigationTab);
     const dispatch = useDispatch();
     const handleChange = (event: SyntheticEvent, newValue: string) => { dispatch(setTab(newValue)) };
     const pathMap = {
-        home: "/",
-        tool: "/tool",
-        schedule: "/schedule",
-        dairy: "/dairy",
+        home: `${ROUTES_INFO.HOME.path}`,
+        tool: `/${ROUTES_INFO.TOOL.path}`,
+        schedule: `/${ROUTES_INFO.SCHEDULE.path}`,
+        dairy: `/${ROUTES_INFO.DAIRY.path}`,
     };
 
-    useLocation();
+    useEffect(() => {
+        const currentTab = location.pathname.split('/')[1];
 
-    useEffect(() => { setTab(window.location.pathname) }, []);
+        if(currentTab) {
+            dispatch(setTab(`/${currentTab}` ?? pathMap.home));
+        }
+    }, [location]);
 
     return (
         <Navigation
@@ -36,7 +42,7 @@ const BottomNavigation = () => {
                 component={Link}
                 to={pathMap.home}
                 value={pathMap.home}
-                label="Home"
+                label={ROUTES_INFO.HOME.shortName}
                 icon={<WindowIcon />}
             />
             <BottomNavigationAction
@@ -44,7 +50,7 @@ const BottomNavigation = () => {
                 component={Link}
                 to={pathMap.tool}
                 value={pathMap.tool}
-                label="Công cụ"
+                label={ROUTES_INFO.TOOL.name}
                 icon={<ArchitectureIcon />}
             />
             <BottomNavigationAction
@@ -52,7 +58,7 @@ const BottomNavigation = () => {
                 component={Link}
                 to={pathMap.schedule}
                 value={pathMap.schedule}
-                label="TKB"
+                label={ROUTES_INFO.SCHEDULE.shortName}
                 icon={<CalendarMonthIcon />}
             />
             <BottomNavigationAction
@@ -60,7 +66,7 @@ const BottomNavigation = () => {
                 component={Link}
                 to={pathMap.dairy}
                 value={pathMap.dairy}
-                label="Nhật Ký"
+                label={ROUTES_INFO.DAIRY.shortName}
                 icon={<NotesIcon />}
             />
         </Navigation>

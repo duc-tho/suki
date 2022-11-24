@@ -2,19 +2,19 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../index'
 
 interface NavigationTabState {
-  tab: string
+    tab: string
 }
 
 const initialState: NavigationTabState = {
-  tab: '/',
+    tab: '/',
 }
 
 export const NavigationTabSlice = createSlice({
-  name: 'NavigationTab',
-  initialState,
-  reducers: {
-    setTab: (state, action) => { state.tab = action.payload; }
-  }
+    name: 'NavigationTab',
+    initialState,
+    reducers: {
+        setTab: (state, action) => { state.tab = action.payload; }
+    }
 })
 
 export const { setTab } = NavigationTabSlice.actions

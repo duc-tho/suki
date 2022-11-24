@@ -12,7 +12,7 @@ const Header: FunctionComponent = () => {
     const navigate = useNavigate();
 
     const handleBackButtonClick = () => {
-        navigate('/')
+        navigate(ROUTES_INFO.HOME.path)
     }
 
     return (

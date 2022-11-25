@@ -16,6 +16,6 @@
         "./src/client"
     ],
     "include": [
-        "./src/server"
+        "./src/server/**/*"
     ]
 }

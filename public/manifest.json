@@ -1,25 +1,25 @@
 {
-    "short_name": "ntho app",
+    "short_name": "suki",
     "name": "suki",
     "description": "suki app",
     "icons": [
         {
             "src": "favicon.png",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/png"
+            "type": "image/png",
+            "sizes": "16x16"
         },
         {
             "src": "logo.png",
             "type": "image/png",
-            "sizes": "1500x1500"
+            "sizes": "490x490"
         },
         {
             "src": "/logo.png",
             "type": "image/png",
-            "sizes": "1500x1500"
+            "sizes": "490x490"
         }
     ],
-    "start_url": ".",
+    "start_url": "/",
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#272b30"

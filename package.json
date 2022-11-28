@@ -17,6 +17,9 @@
     },
     "author": "ntho",
     "license": "ISC",
+    "engines": {
+        "node": "16.10.1"
+    },
     "devDependencies": {
         "@babel/core": "^7.19.6",
         "@babel/preset-env": "^7.19.4",

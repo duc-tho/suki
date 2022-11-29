@@ -10,7 +10,12 @@ dotenv.config();
 const PORT: number = parseInt((process.env.PORT ?? 8080) as string, 10);
 const app = express();
 
-app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false, crossOriginResourcePolicy: false }));
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: false,
+    crossOriginOpenerPolicy: false
+}));
 app.use(compression({ level: 6 }));
 app.use(cors());
 app.use(express.json());

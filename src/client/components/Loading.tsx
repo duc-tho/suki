@@ -15,7 +15,9 @@ const Loading: FunctionComponent = () => {
     const [stickerLoaded, setStickerLoaded] = useState(false);
     const handleStickerLoad = () => setStickerLoaded(true);
 
-    document.onreadystatechange = () => document.readyState === 'complete' && open && dispatch(hide());
+    window.onload = () => {
+        open && dispatch(hide());
+    };
 
     return (
         <div className={clsx(classes.wrap)}>

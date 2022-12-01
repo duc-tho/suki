@@ -5,7 +5,7 @@ import classes from "../assets/scss/modules/AppBackground.module.scss";
 import useWiggle from "../core/hooks/useWiggle";
 
 const randomBGIndex: number = Math.floor(Math.random() * 5) + 1;
-const background: string = require(`../assets/images/background/bg-${randomBGIndex}.jpg`);
+const background: string = require(`../assets/images/background/bg-${randomBGIndex}.png`);
 
 const AppBackground: FunctionComponent = () => {
     const imgRef = useRef<HTMLImageElement>(null);

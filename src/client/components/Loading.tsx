@@ -5,6 +5,7 @@ import { FunctionComponent, useState } from "react";
 import { useDispatch, useSelector } from "../store/hooks";
 import { hide, selectLoading } from "../store/slices/LoadingSlice";
 import { MENHERA } from "../core/constants/File";
+import { useReadyStateEffect } from "react-ready-state-effect";
 
 const randomStickerIndex: number = Math.floor(Math.random() * MENHERA.length);
 const sticker: string = require(`../assets/images/menhera/${MENHERA[randomStickerIndex]}`);
@@ -15,9 +16,10 @@ const Loading: FunctionComponent = () => {
     const [stickerLoaded, setStickerLoaded] = useState(false);
     const handleStickerLoad = () => setStickerLoaded(true);
 
-    window.onload = () => {
-        open && dispatch(hide());
-    };
+    useReadyStateEffect(() => {
+        console.log(open, 'complete');
+        dispatch(hide());
+    }, [], "complete");
 
     return (
         <div className={clsx(classes.wrap)}>

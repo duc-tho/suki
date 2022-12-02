@@ -17,7 +17,7 @@ const Loading: FunctionComponent = () => {
     const onAppLoaded = () => { dispatch(hide()); }
 
     window.onload = () => onAppLoaded();
-    useEffect(() => open && ((window as any).isLoaded) && setTimeout(onAppLoaded, 2000));
+    useEffect(() => { open && ((window as any).isLoaded) && setTimeout(onAppLoaded, 2000) });
 
     return (
         <div className={clsx(classes.wrap)}>

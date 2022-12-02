@@ -1,6 +1,11 @@
 import { getToken } from "firebase/messaging";
 import { firebaseMessaging } from "./services/firebase/Firebase";
 
+const calcAppScreenSize = () => {
+    const core = document.getElementById('core')!;
+    core.style.height = `${(window as any).screenHeight}px`;
+}
+
 class Bootstrap {
     excute() {
         this.enableFirebaseServiceWorker();
@@ -14,11 +19,7 @@ class Bootstrap {
     }
 
     enableResizeEvent() {
-        window.addEventListener('resize', () => {
-            const body = document.getElementsByTagName('body')[0];
-            body.style.width = `${window.innerWidth}px`;
-            body.style.height = `${window.innerHeight}px`;
-        });
+        calcAppScreenSize();
     }
 }
 

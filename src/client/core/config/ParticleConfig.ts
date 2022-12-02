@@ -3,7 +3,7 @@ import type { IOptions, RecursivePartial } from "tsparticles-engine";
 
 export const ParticlesConfig: RecursivePartial<IOptions> = {
     "fullScreen": {
-        "enable": true,
+        "enable": false,
         "zIndex": 1
     },
     "particles": {

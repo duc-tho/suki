@@ -15,7 +15,7 @@ function Particle() {
         // await console.log(container);
     }, []);
 
-    return (<Particles className={clsx(classes.particle)} options={ParticlesConfig} init={particlesInit} loaded={particlesLoaded} />);
+    return (<Particles className={clsx(classes.particle)} height={(window as any).screenHeight} options={ParticlesConfig} init={particlesInit} loaded={particlesLoaded} />);
 }
 
 export default Particle;

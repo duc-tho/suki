@@ -33,7 +33,7 @@ const AppBackground: FunctionComponent = () => {
 
     return (
         <>
-            <div className={clsx(classes.wrap)}>
+            <div id="appBackground" className={clsx(classes.wrap)}>
                 <img src={background} alt="App Background" ref={imgRef} onLoad={handleLoad} />
             </div>
             <Particle />

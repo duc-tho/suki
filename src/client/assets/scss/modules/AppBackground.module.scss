@@ -15,10 +15,6 @@
         transition: 1s;
         transition-timing-function: linear;
         scale: 1;
-
-        @media screen and (max-width: 640px) {
-            height: 100%;
-        }
     }
 
 

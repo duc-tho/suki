@@ -14,10 +14,26 @@ module.exports = {
         sourceType: 'module'
     },
     plugins: [
-        'react'
+        'react',
+        'import'
     ],
     rules: {
         indent: ['error', 4],
-        semi: ['error', 'always']
+        semi: ['error', 'always'],
+        'import/no-unresolved': 'error'
+    },
+    settings: {
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx']
+        },
+        'import/resolver': {
+            typescript: {
+                alwaysTryTypes: true,
+                directory: [
+                    './tsconfig.json',
+                    './tsconfig.server.json'
+                ]
+            }
+        }
     }
 };

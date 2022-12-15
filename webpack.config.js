@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = () => {
     return {
@@ -67,8 +68,10 @@ module.exports = () => {
             ]
         },
         optimization: {
+            minimize: true,
             minimizer: [
-                new CssMinimizerPlugin()
+                new CssMinimizerPlugin(),
+                new UglifyJsPlugin()
             ]
         },
         plugins: [

@@ -7,15 +7,15 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "allowSyntheticDefaultImports": true,
-        "outDir": "build/server",
+        "outDir": "../../build/server",
         "moduleResolution": "node",
-        "sourceMap": true
+        "sourceMap": false
     },
     "compileOnSave": true,
     "exclude": [
         "./src/client"
     ],
     "include": [
-        "./src/server/**/*"
+        "./**/*"
     ]
 }

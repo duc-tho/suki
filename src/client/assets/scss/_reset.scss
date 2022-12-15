@@ -17,6 +17,7 @@ body {
     position: relative;
     z-index: vars.$initIndex;
     background-color: vars.$primaryBackground;
+    overflow: hidden;
 }
 
 #core {

@@ -6,7 +6,7 @@
     "scripts": {
         "client": "webpack --watch",
         "client-serve": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-        "server": "nodemon -e ts --exec \"npm run compile && npm run start\"",
+        "server": "nodemon",
         "compile": "tsc -p ./src/server/tsconfig.json",
         "start": "node build/server",
         "build": "webpack --mode production && tsc -p ./src/server/tsconfig.json",

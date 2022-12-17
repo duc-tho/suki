@@ -1,8 +1,11 @@
 {
-    "watch": [
-        "src/server/"
-    ],
+    "ext": "ts,json,js",
+    "exec": "npm run compile && npm run start",
+    "watch": [ "src/server/" ],
     "execMap": {
         "ts": "ts-node"
+    },
+    "events": {
+        "start": "npx env-cmd -x npx kill-port $PORT"
     }
 }

@@ -18,14 +18,6 @@ module.exports = () => {
         resolve: {
             extensions: ['.tsx', '.ts', '.js']
         },
-        devServer: {
-            port: 3000,
-            open: true,
-            historyApiFallback: true,
-            proxy: {
-                '/api': 'http://localhost:8080'
-            }
-        },
         module: {
             rules: [
                 {
@@ -71,7 +63,7 @@ module.exports = () => {
             minimize: true,
             minimizer: [
                 new CssMinimizerPlugin(),
-                new UglifyJsPlugin()
+                ...(process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()] : [])
             ]
         },
         plugins: [

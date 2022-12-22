@@ -12,6 +12,7 @@ const logger = winston.createLogger({
         new winston.transports.File({ filename: 'src/server/logs/error.log', level: 'error' }),
         new winston.transports.Console({
             format: winston.format.colorize(),
+            stderrLevels: ['error'],
         })
     ],
 });

@@ -8,6 +8,7 @@ import path from 'path'
 import morgan from './core/configs/morgan';
 import mongoSanitize from 'express-mongo-sanitize';
 import routes from "./routes";
+import jsend from 'jsend';
 
 dotenv.config();
 const app = express();
@@ -28,6 +29,7 @@ app.use(compression({ level: 6 }));
 app.use(cors());
 app.use(express.static(`public`));
 app.use(express.static(`build/dist`));
+app.use(jsend.middleware)
 app.use('/api', routes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'build/dist/index.html'));

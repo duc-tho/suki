@@ -1,4 +1,3 @@
-import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.scss';
 import { store } from './store';
@@ -11,11 +10,9 @@ import { theme } from './core/config/ThemeConfig';
 createRoot(document.getElementById('core')!).render(
     <ThemeProvider theme={theme}>
         <Provider store={store}>
-            <StrictMode>
                 <BrowserRouter>
                     <App/>
                 </BrowserRouter>
-            </StrictMode>
         </Provider>
     </ThemeProvider>
 );

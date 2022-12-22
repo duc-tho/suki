@@ -23,7 +23,7 @@ const Loading: FunctionComponent = () => {
         <div className={clsx(classes.wrap)}>
             <Backdrop
                 sx={{ color: '#FFF', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={open}
+                open={!!open}
                 className={clsx(classes.loading)}
             >
                 <img className={clsx(classes.sticker, stickerLoaded && classes.active)}

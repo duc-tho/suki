@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE } from './core/constants/LocalStorage';
 import { getToken } from "firebase/messaging";
 import { firebaseMessaging } from "./services/firebase/Firebase";
 
@@ -18,8 +19,14 @@ class Bootstrap {
     }
 
     enableFirebaseServiceWorker() {
-        getToken(firebaseMessaging, { vapidKey: process.env.FB_VAPID_KEY }).then((data) => {
-            console.log(data);
+        let currentPushToken = localStorage.getItem(LOCAL_STORAGE.PUSH_TOKEN);
+
+        getToken(firebaseMessaging, { vapidKey: process.env.FB_VAPID_KEY }).then((pushToken) => {
+            if (currentPushToken === pushToken) {
+                return;
+            }
+
+            localStorage.setItem(LOCAL_STORAGE.PUSH_TOKEN, pushToken);
         })
     }
 

@@ -5,7 +5,7 @@ import { TiktokGetValidateSchema } from "../validations/Tiktok.validate";
 import { ValidationUtils } from "../core/utils/Validation.utils";
 import { TIKTOK_VALID_DOMAIN } from '../core/constants/Common';
 import { ResponseErrorResult, ResponseSuccessResult, ResponseUtils } from '../core/utils/Response.utils';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosError } from 'axios';
 import logger from '../core/configs/Logger';
 
 type TiktokAPIResponseData = {

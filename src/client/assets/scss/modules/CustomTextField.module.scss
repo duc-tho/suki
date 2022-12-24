@@ -3,19 +3,21 @@
 .wrap {
     .input {
         background-color: vars.$secondaryBackground;
-        border-radius: 7px;
+        border-radius: 10px;
         box-shadow: vars.$secondaryBackground 0px 0px 12px -2px;
 
         label {
-            color: vars.$primaryColor;
+            color: vars.$primaryHighlight;
         }
 
         input {
             color: vars.$primaryHighlight;
         }
 
-        div fieldset {
-            // border-color: transparentize(vars.$primaryHighlight, 0.6) !important;
+        input:active+fieldset,
+        input:focus+fieldset {
+            border-radius: 10px;
+            border-color: transparentize(vars.$primaryHighlight, 0.6) !important;
         }
     }
 }

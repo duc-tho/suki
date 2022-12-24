@@ -3,6 +3,7 @@ import { Master } from '../pages/Master';
 import { ROUTES_INFO } from './RoutesInfo';
 import Home from '../pages/Home';
 import Tool from '../pages/Tool';
+import TiktokDownloader from '../components/TiktokDownloader';
 
 const {
     HOME, PROFILE, DAIRY, SCHEDULE,
@@ -24,7 +25,7 @@ const routes = (isLoggedIn: boolean) => [
                 element: <Outlet />,
                 children: [
                     { index: true, element: <Tool /> },
-                    { path: TIKTOK_DOWNLOADER.path, element: <>tiktok d</> },
+                    { path: TIKTOK_DOWNLOADER.path, element: <TiktokDownloader /> },
                     { path: RANDOM_IMAGE.path, element: <>r image</> },
                 ],
             },

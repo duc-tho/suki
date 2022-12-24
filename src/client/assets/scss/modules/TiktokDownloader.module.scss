@@ -1,0 +1,31 @@
+@use '../vars.scss';
+
+.wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+
+    .action {
+        display: flex;
+        gap: .5rem;
+        width: 100%;
+
+        .mainButton {
+            flex-grow: 1;
+        }
+    }
+
+    .content {
+        width: 100%;
+        flex-grow: 1;
+        background-color: transparentize($color: vars.$primaryColor, $amount: 0.95);
+        backdrop-filter: saturate(80%) blur(3px);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+

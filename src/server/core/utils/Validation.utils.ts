@@ -5,7 +5,7 @@ import { ResponseErrorResult, ResponseUtils } from './Response.utils';
 
 export class ValidationUtils {
     static validateRequest(request: Request, validateSchema: AnySchema): true|ResponseErrorResult {
-        const validateResults: ValidationResult = validateSchema.validate(request.query)
+        const validateResults: ValidationResult = validateSchema.validate(request.query, { allowUnknown: true })
         let result: true|ResponseErrorResult = true;
 
         if (validateResults.error) {

@@ -1,5 +1,5 @@
 import morgan from 'morgan';
-import logger from './logger';
+import logger from './Logger';
 
 morgan.token('message', (req, res: any) => res.locals.errorMessage || '');
 

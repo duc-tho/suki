@@ -10,9 +10,9 @@ import { theme } from './core/config/ThemeConfig';
 createRoot(document.getElementById('core')!).render(
     <ThemeProvider theme={theme}>
         <Provider store={store}>
-                <BrowserRouter>
-                    <App/>
-                </BrowserRouter>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
         </Provider>
     </ThemeProvider>
 );

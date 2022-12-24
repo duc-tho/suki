@@ -1,7 +1,7 @@
 import app from "./app";
-import logger from "./core/configs/logger";
+import logger from "./core/configs/Logger";
 import mongoose, { connect } from 'mongoose';
-import { DEFAULTS } from "./core/constants/defaults";
+import { DEFAULTS } from "./core/constants/Defaults";
 
 mongoose.set('strictQuery', false);
 connect(

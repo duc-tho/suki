@@ -5,7 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import compression from 'compression';
 import path from 'path'
-import morgan from './core/configs/morgan';
+import morgan from './core/configs/Morgan';
 import mongoSanitize from 'express-mongo-sanitize';
 import routes from "./routes";
 import jsend from 'jsend';

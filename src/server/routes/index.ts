@@ -1,8 +1,8 @@
 import express from 'express';
-import authRoute from './auth.route';
+import tiktokRoute from './Tiktok.route';
 
 const router = express.Router();
 
-router.use('/auth', authRoute);
+router.use('/tiktok', tiktokRoute);
 
 export default router;

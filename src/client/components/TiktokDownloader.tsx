@@ -27,7 +27,7 @@ export default function TiktokDownloader() {
                 </CustomButton>
             </div>
             <div className={clsx(classes.content)}>
-                <CircularProgress size={'1rem'} color="success" />
+                <CircularProgress size={'1rem'} color="success" disableShrink />
             </div>
         </div>
     )

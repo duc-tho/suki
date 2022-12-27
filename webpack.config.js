@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = () => {
@@ -11,8 +12,9 @@ module.exports = () => {
         entry: './src/client/index.tsx',
         output: {
             path: path.join(__dirname, 'build', 'dist'),
-            filename: 'bundle.js',
-            publicPath: '/'
+            filename: '[id].bundle.js',
+            publicPath: '/',
+            chunkFilename: '[id].[chunkhash].js'
         },
         mode: process.env.NODE_ENV || 'development',
         resolve: {
@@ -61,9 +63,31 @@ module.exports = () => {
         },
         optimization: {
             minimize: true,
+            runtimeChunk: 'single',
+            splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 0,
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/](!lodash)/,
+                        name (module) {
+                            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                            return `npm.${packageName.replace('@', '')}`;
+                        }
+                    }
+                }
+            },
             minimizer: [
                 new CssMinimizerPlugin(),
-                ...(process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()] : [])
+                new CompressionPlugin(),
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        output: {
+                            comments: false
+                        }
+                    }
+                })
             ]
         },
         plugins: [

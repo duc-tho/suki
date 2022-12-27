@@ -21,7 +21,6 @@
         width: 100%;
         flex-grow: 1;
         background-color: transparentize($color: vars.$primaryColor, $amount: 0.95);
-        backdrop-filter: saturate(80%) blur(3px);
         border-radius: 5px;
         display: flex;
         justify-content: center;

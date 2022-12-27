@@ -31,7 +31,7 @@ module.exports = {
                 alwaysTryTypes: true,
                 directory: [
                     './tsconfig.json',
-                    './tsconfig.server.json'
+                    './src/server/tsconfig.server.json'
                 ]
             }
         }

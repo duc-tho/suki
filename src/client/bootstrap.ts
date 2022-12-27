@@ -2,20 +2,9 @@ import { LOCAL_STORAGE } from './core/constants/LocalStorage';
 import { getToken } from "firebase/messaging";
 import { firebaseMessaging } from "./services/firebase/Firebase";
 
-const calcAppScreenSize = () => {
-    const core = document.getElementById('core')!;
-    const appBackground = document.getElementById('appBackground')!;
-    core.style.height = `${(window as any).screenHeight}px`;
-
-    if ((window as any).screenWidth < 640) {
-        appBackground.style.height = `${(window as any).screenHeight}px`;
-    }
-}
-
 class Bootstrap {
     excute() {
         this.enableFirebaseServiceWorker();
-        this.enableResizeEvent();
     }
 
     enableFirebaseServiceWorker() {
@@ -30,8 +19,26 @@ class Bootstrap {
         })
     }
 
-    enableResizeEvent() {
-        calcAppScreenSize();
+    enableResizeEvent(isKeyboardOpen = false) {
+        this.calcAppScreenSize(isKeyboardOpen);
+
+        window.addEventListener('resize', () => {
+            this.calcAppScreenSize(isKeyboardOpen);
+        });
+    }
+
+    calcAppScreenSize(isKeyboardOpen = false) {
+        const screenHeight = `${window.screen.height}px`;
+        const windowHeight = `${window.innerHeight}px`
+        const core = document.getElementById('core')!;
+        const appBackground = document.getElementById('appBackground')!;
+        const particle = document.getElementById('tsparticles')!;
+        core.style.height = isKeyboardOpen ? screenHeight : windowHeight;
+
+        if (window.innerWidth < 640) {
+            appBackground.style.height = windowHeight;
+            particle.style.height = windowHeight;
+        }
     }
 }
 

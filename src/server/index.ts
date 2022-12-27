@@ -7,8 +7,6 @@ mongoose.set('strictQuery', false);
 connect(
     process.env.MONGODB_URL ?? DEFAULTS.MONGODB_URL, {},
     () => {
-        logger.info('Connected to MongoDB')
-
         const PORT = process.env.PORT || DEFAULTS.PORT
         app.listen(PORT, () => {
             logger.info(`Listening to port ${PORT}`);

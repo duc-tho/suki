@@ -33,7 +33,7 @@ class Bootstrap {
         const core = document.getElementById('core')!;
         const appBackground = document.getElementById('appBackground')!;
         const particle = document.getElementById('tsparticles')!;
-        core.style.height = isKeyboardOpen ? screenHeight : windowHeight;
+        core.style.height = screenHeight;
 
         if (window.innerWidth < 640) {
             appBackground.style.height = windowHeight;

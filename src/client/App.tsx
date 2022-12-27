@@ -19,7 +19,6 @@ export const App = () => {
     useEffect(() => {
         dispatch(show());
         bootstrap.excute();
-        bootstrap.enableResizeEvent(isKeyboardOpen);
     }, []);
 
     return (

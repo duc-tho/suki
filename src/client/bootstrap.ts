@@ -5,6 +5,7 @@ import { firebaseMessaging } from "./services/firebase/Firebase";
 class Bootstrap {
     excute() {
         this.enableFirebaseServiceWorker();
+        this.enableResizeEvent();
     }
 
     enableFirebaseServiceWorker() {
@@ -19,15 +20,15 @@ class Bootstrap {
         })
     }
 
-    enableResizeEvent(isKeyboardOpen = false) {
-        this.calcAppScreenSize(isKeyboardOpen);
+    enableResizeEvent() {
+        this.calcAppScreenSize();
 
         window.addEventListener('resize', () => {
-            this.calcAppScreenSize(isKeyboardOpen);
+            this.calcAppScreenSize();
         });
     }
 
-    calcAppScreenSize(isKeyboardOpen = false) {
+    calcAppScreenSize() {
         const screenHeight = `${window.screen.height}px`;
         const windowHeight = `${window.innerHeight}px`
         const core = document.getElementById('core')!;

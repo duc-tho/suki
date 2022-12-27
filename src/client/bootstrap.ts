@@ -29,12 +29,11 @@ class Bootstrap {
     }
 
     calcAppScreenSize() {
-        const screenHeight = `${window.screen.height}px`;
         const windowHeight = `${window.innerHeight}px`
         const core = document.getElementById('core')!;
         const appBackground = document.getElementById('appBackground')!;
         const particle = document.getElementById('tsparticles')!;
-        core.style.height = screenHeight;
+        core.style.height = windowHeight < (window as any).screenHeight ? (window as any).screenHeight : windowHeight;
 
         if (window.innerWidth < 640) {
             appBackground.style.height = windowHeight;

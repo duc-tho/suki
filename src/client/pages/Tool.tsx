@@ -1,6 +1,6 @@
 import ToolItem from "../components/ToolItem";
 import { ROUTES_INFO } from "../routes/RoutesInfo";
-const tikdownThumbnail = require('../assets/images/icons/tikdown-icon.png');
+const tikdownThumbnail = '/images/icons/tikdown-icon.png';
 
 type TikdownType = {
     label: string,

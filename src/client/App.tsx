@@ -26,7 +26,7 @@ export const App = () => {
             </div>
             <Loading />
             <Toast />
-            <AppBackground />
+            <AppBackground useVideo />
         </>
     );
 };

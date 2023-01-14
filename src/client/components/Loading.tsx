@@ -7,7 +7,7 @@ import { hide, selectLoading } from "../store/slices/LoadingSlice";
 import { MENHERA } from "../core/constants/File";
 
 const randomStickerIndex: number = Math.floor(Math.random() * MENHERA.length);
-const sticker: string = require(`../assets/images/menhera/${MENHERA[randomStickerIndex]}`);
+const sticker: string = `/images/menhera/${MENHERA[randomStickerIndex]}`;
 
 const Loading: FunctionComponent = () => {
     const { open } = useSelector(selectLoading);

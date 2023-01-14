@@ -1,4 +1,5 @@
 @use '../vars.scss';
+@use '../animation.scss';
 
 .wrap {
     height: 100%;
@@ -25,6 +26,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .author {
+        color: vars.$secondaryColor;
+        line-height: 1.7;
+
+        span {
+            animation: flickerText 1s infinite;
+        }
     }
 }
 

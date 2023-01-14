@@ -1,9 +1,14 @@
+import { AppBackgroundUtils } from './core/utils/AppBackgroundUtils';
+import { READY_STATE } from './core/constants/Common';
 import { LOCAL_STORAGE } from './core/constants/LocalStorage';
 import { getToken } from "firebase/messaging";
 import { firebaseMessaging } from "./services/firebase/Firebase";
 
 class Bootstrap {
+    AppBackground: AppBackgroundUtils|null = null;
+
     excute() {
+        this.AppBackground = new AppBackgroundUtils();
         this.enableFirebaseServiceWorker();
         this.enableResizeEvent();
     }
@@ -21,24 +26,15 @@ class Bootstrap {
     }
 
     enableResizeEvent() {
-        this.calcAppScreenSize();
+        document.addEventListener('readystatechange', () => {
+            if (document.readyState === READY_STATE.COMPLETE) {
+                this.AppBackground.calcAppScreenSize();
+            }
+        });
 
         window.addEventListener('resize', () => {
-            this.calcAppScreenSize();
+            this.AppBackground.calcAppScreenSize();
         });
-    }
-
-    calcAppScreenSize() {
-        const windowHeight = `${window.innerHeight}px`
-        const core = document.getElementById('core')!;
-        const appBackground = document.getElementById('appBackground')!;
-        const particle = document.getElementById('tsparticles')!;
-        core.style.height = windowHeight < (window as any).screenHeight ? (window as any).screenHeight : windowHeight;
-
-        if (window.innerWidth < 640) {
-            appBackground.style.height = windowHeight;
-            particle.style.height = windowHeight;
-        }
     }
 }
 

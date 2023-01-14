@@ -1,0 +1,7 @@
+@use './vars.scss';
+
+@keyframes flickerText {
+    0% { color: vars.$secondaryColor; }
+    50% { color: vars.$primaryHighlight; }
+    100% { color: vars.$secondaryColor; }
+}

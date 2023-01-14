@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { FunctionComponent } from "react";
 import Particle from "./Particles";
 import classes from "../assets/scss/modules/AppBackground.module.scss";
+import { AppBackgroundUtils } from "../core/utils/AppBackgroundUtils";
 
 const randomBGIndex: number = Math.floor(Math.random() * 5) + 1;
 const randomVideoBGIndex: number = Math.floor(Math.random() * 8) + 1;
@@ -13,13 +14,15 @@ type AppBackgroundProps = {
 }
 
 const AppBackground: FunctionComponent<AppBackgroundProps> = (props) => {
-    console.log('123');
+    const init = () => {
+        new AppBackgroundUtils().calcAppScreenSize();
+    }
 
     return (
         <>
             <div id="appBackground" className={clsx(classes.wrap)}>
                 {!!props.useVideo
-                    ? <video loop autoPlay muted src={videoBackgroundUri}/>
+                    ? <video loop autoPlay muted src={videoBackgroundUri} onPlay={init}/>
                     : <img src={background} alt="App Background" />
                 }
             </div>

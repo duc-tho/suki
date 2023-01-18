@@ -9,7 +9,9 @@
     background-color: transparentize($color: vars.$secondaryBackground, $amount: 0.7) !important;
     backdrop-filter: blur(33px);
     height: 70px !important;
+    max-height: 70px;
     overflow: hidden;
+    min-height: 70px;
 
     a {
         gap: 5px;

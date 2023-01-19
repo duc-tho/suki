@@ -36,7 +36,11 @@ export class TiktokService {
 
         let result: ResponseErrorResult|ResponseSuccessResult|null = null;
 
-        await axios.get(`${CONFIGS.TIKTOK_API}${tiktokUrl}`).then((response: any) => {
+        await axios.get(`${CONFIGS.TIKTOK_API}${tiktokUrl}`, {
+            headers: {
+                "Accept-Encoding": "gzip,deflate,compress"
+            }
+        }).then((response: any) => {
             const returnDatas: TiktokAPIResponseData = {
                 url: response.data.url,
                 description: response.data.desc,

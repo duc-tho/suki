@@ -5,9 +5,8 @@ const logger = winston.createLogger({
     format: winston.format.combine(
         winston.format.json(),
         winston.format.colorize(),
-        winston.format.splat(),
         winston.format.timestamp(),
-        winston.format.printf(({ level, message }) => `${level}: ${message}`)
+        winston.format.printf(({ level, message, stack }) => `${level}: ${message}\n${stack ?? ''}`)
     ),
     transports: [
         new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),

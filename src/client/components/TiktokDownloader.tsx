@@ -42,8 +42,6 @@ export default function TiktokDownloader() {
 
         setTiktokVideoInfo(results.data);
         setIsOnSearch(false);
-        console.log(results.data);
-
     }
 
     return (

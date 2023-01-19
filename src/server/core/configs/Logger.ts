@@ -6,10 +6,11 @@ const logger = winston.createLogger({
         winston.format.json(),
         winston.format.colorize(),
         winston.format.splat(),
+        winston.format.timestamp(),
         winston.format.printf(({ level, message }) => `${level}: ${message}`)
     ),
     transports: [
-        new winston.transports.File({ filename: 'src/server/logs/error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
         new winston.transports.Console({
             format: winston.format.colorize(),
             stderrLevels: ['error'],

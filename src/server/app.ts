@@ -9,12 +9,11 @@ import morgan from './core/configs/Morgan';
 import mongoSanitize from 'express-mongo-sanitize';
 import routes from "./routes";
 import jsend from 'jsend';
+import ErrorHandleUtils from "./core/utils/ErrorHandle.utils";
 
 dotenv.config();
 const app = express();
 
-app.use(morgan.successHandler);
-app.use(morgan.errorHandler);
 app.use(helmet({
     contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
@@ -34,5 +33,8 @@ app.use('/api', routes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'build/dist/index.html'));
 });
+app.use(morgan.successHandler);
+app.use(morgan.errorHandler);
 
+app.use(ErrorHandleUtils.errorHandle)
 export default app;

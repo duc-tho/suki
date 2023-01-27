@@ -1,5 +1,6 @@
 import { Avatar, Link, Typography } from "@mui/material"
 import classes from '../assets/scss/modules/TiktokVideoInfo.module.scss';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 export type TiktokVideoInfoProps = {
     url: string
@@ -26,7 +27,8 @@ export default function TiktokVideoInfo(props: TiktokVideoInfoProps) {
                 </div>
                 <div className={classes.video}>
                     <div className={classes.cover}>
-                        <img src={props.cover} alt={`${props.author} - ${props.description}`} />
+                        <img src={props.cover} alt={`${props.author} - ${props.description}`}/>
+                        <PlayCircleOutlineIcon className={classes.actionIcon} fontSize="large" />
                     </div>
                     <div className={classes.info}>
                         <Typography className={classes.description}>
@@ -37,7 +39,7 @@ export default function TiktokVideoInfo(props: TiktokVideoInfoProps) {
                         <Typography className={classes.wrapText}>
                             <b>Liên Kết:</b>
                             &nbsp;
-                            <Link target="_blank">{props.url}</Link>
+                            <Link target="_blank" href={props.url}>{props.url}</Link>
                         </Typography>
                         <Typography className={classes.wrapText}>
                             <b>Nhạc:</b>

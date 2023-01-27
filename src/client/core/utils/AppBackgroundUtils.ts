@@ -21,9 +21,7 @@ export class AppBackgroundUtils {
         const isBackgroundSourceElementUseVideo = this.backgroundSourceElement?.nodeName
             && this.backgroundSourceElement?.nodeName === ELEMENT_TAG_NAME.VIDEO;
 
-        this.core.style.height = window.innerHeight < this.window.screenHeight
-            ? this.window.screenHeight
-            : windowHeightStyle;
+        this.core.style.height = windowHeightStyle;
 
         if (isBackgroundSourceElementUseVideo) {
             this.handleVideoBackground();

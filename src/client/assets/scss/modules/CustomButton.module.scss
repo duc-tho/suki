@@ -13,6 +13,15 @@
             background-color: vars.$secondaryBackground !important;
         }
 
+        &:disabled {
+            background-color: transparentize(vars.$secondaryBackground, 0.3) solid 1px;
+            color: vars.$secondaryColor;
+
+            svg {
+                color: vars.$secondaryColor;
+            }
+        }
+
         @media (hover: none) {
             background-color: vars.$secondaryBackground !important;
         }

@@ -9,7 +9,13 @@ export type ApiResponse<T> = {
 }
 
 const handleResponseSuccess = (response: AxiosResponse) => {
-    return response.data.data;
+    let results = response.data;
+
+    if (response.data.data) {
+        results = response.data.data;
+    }
+
+    return results;
 }
 
 const handleResponseError = (error: AxiosError) => {

@@ -22,10 +22,10 @@ class Bootstrap {
     }
 
     enableResizeEvent() {
-        let appBackground: AppBackgroundUtils|null = null;
-        window.addEventListener('resize', () => {
-            if (!appBackground) appBackground = new AppBackgroundUtils();
+        let appBackground: AppBackgroundUtils = new AppBackgroundUtils();
+        appBackground.calcAppScreenSize();
 
+        window.addEventListener('resize', () => {
             appBackground.calcAppScreenSize();
         });
     }

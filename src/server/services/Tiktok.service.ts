@@ -55,7 +55,7 @@ export class TiktokService {
             result = ResponseUtils.createSuccessResult(statusCode.OK, returnDatas);
         }).catch((error: AxiosError) => {
             logger.error(error);
-            result = ResponseUtils.createErrorResult(statusCode.INTERNAL_SERVER_ERROR, "Can't get from tiktok API");
+            result = ResponseUtils.createErrorResult(statusCode.INTERNAL_SERVER_ERROR, "Can't get video info from tiktok API");
         });
 
         return result!;

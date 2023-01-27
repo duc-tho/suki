@@ -13,35 +13,67 @@ import DownloadingIcon from '@mui/icons-material/Downloading';
 import TiktokVideoInfo, { TiktokVideoInfoProps } from './TiktokVideoInfo';
 
 export default function TiktokDownloader() {
-    const [ tiktokUrl, setTiktokUrl ] = useState('');
-    const [ tiktokVideoInfo, setTiktokVideoInfo ] = useState<TiktokVideoInfoProps>();
-    const [ isOnSearch, setIsOnSearch ] = useState(false);
+    const [tiktokUrl, setTiktokUrl] = useState('');
+    const [tiktokVideoInfo, setTiktokVideoInfo] = useState<TiktokVideoInfoProps>();
+    const [isOnLoading, setisOnLoading] = useState(false);
     const { enqueueSnackbar } = useSnackbar();
 
     const handletiktokUrlChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setTiktokUrl(event.target.value);
     }
 
+    const downloadHandle = async () => {
+        setisOnLoading(true);
+
+        Axios({
+            url: tiktokUrl,
+            method: "GET",
+            responseType: "blob",
+            headers: {
+                "Content-type": "application/octet-stream"
+            }
+        }).then(response => {
+            let link = document.createElement("a");
+
+            link.target = "_blank";
+            link.download = `${new Date().getTime()}.mp4`;
+            link.href = URL.createObjectURL(
+                new Blob([response.data], { type: "video/mp4" })
+            );
+            link.download = "";
+            link.click();
+            link.remove();
+
+            setTimeout(() => {
+                enqueueSnackbar("Tải video thành công", { variant: 'success' });
+                setisOnLoading(false);
+            }, 4000);
+        });
+    }
+
     const searchHandle = async () => {
-        setIsOnSearch(true);
-        const results: ApiResponse<TiktokVideoInfoProps> = await Axios.get('/tiktok', { params: {
-            url: tiktokUrl
-        }});
+        setisOnLoading(true);
+        setTiktokVideoInfo(undefined);
+        const results: ApiResponse<TiktokVideoInfoProps> = await Axios.get('/tiktok', {
+            params: {
+                url: tiktokUrl
+            }
+        });
 
         if (!results) {
             enqueueSnackbar('Faild to get video info.', { variant: 'error' });
-            setIsOnSearch(false);
+            setisOnLoading(false);
             return;
         }
 
         if (results.code && results.code >= 400) {
             enqueueSnackbar(results.message, { variant: 'error' });
-            setIsOnSearch(false);
+            setisOnLoading(false);
             return;
         }
 
         setTiktokVideoInfo(results.data);
-        setIsOnSearch(false);
+        setisOnLoading(false);
     }
 
     return (
@@ -58,7 +90,7 @@ export default function TiktokDownloader() {
                     <HistoryIcon style={{ width: '1rem' }} />
                 </CustomButton>
                 <div className={clsx(classes.mainButton)}>
-                    <CustomButton fullWidth onClick={searchHandle}>
+                    <CustomButton fullWidth disabled={isOnLoading} onClick={searchHandle}>
                         <SearchIcon style={{ width: '1rem' }} />
                         &nbsp;
                         Search
@@ -69,7 +101,7 @@ export default function TiktokDownloader() {
                 </CustomButton>
             </div>
             <div className={clsx(classes.content)}>
-                {isOnSearch ?  <CircularProgress size={'1rem'} color="success" /> : tiktokVideoInfo ? (
+                {isOnLoading ? <CircularProgress size={'1rem'} color="success" /> : tiktokVideoInfo ? (
                     <TiktokVideoInfo {...tiktokVideoInfo} />
                 ) : (
                     <Typography variant='subtitle1' color={'GrayText'}>
@@ -77,7 +109,7 @@ export default function TiktokDownloader() {
                     </Typography>
                 )}
             </div>
-            <CustomButton fullWidth>
+            <CustomButton onClick={downloadHandle} disabled={!tiktokVideoInfo} fullWidth>
                 <DownloadingIcon style={{ width: '1rem' }} />
                 &nbsp;
                 Download

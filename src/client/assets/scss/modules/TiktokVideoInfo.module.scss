@@ -42,7 +42,7 @@
                 box-shadow: 0 0 7px -2px vars.$primaryBackground;
                 backdrop-filter: blur(33px);
 
-                img {
+                img, video {
                     position: absolute;
                     max-width: 100%;
                     max-height: 100%;

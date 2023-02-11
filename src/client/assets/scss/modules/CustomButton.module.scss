@@ -14,11 +14,12 @@
         }
 
         &:disabled {
-            background-color: transparentize(vars.$secondaryBackground, 0.3) solid 1px;
+            background-color: transparentize(vars.$secondaryBackground, 0.3) !important;
             color: vars.$secondaryColor;
 
             svg {
                 color: vars.$secondaryColor;
+                fill: vars.$secondaryColor;
             }
         }
 

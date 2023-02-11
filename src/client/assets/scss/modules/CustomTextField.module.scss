@@ -12,6 +12,11 @@
 
         input {
             color: vars.$primaryColor;
+
+            &:disabled {
+                color: vars.$primaryHighlight;
+                -webkit-text-fill-color: vars.$primaryHighlight;
+            }
         }
 
         input:active+fieldset,

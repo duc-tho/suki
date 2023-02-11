@@ -1,6 +1,7 @@
 import { Avatar, Link, Typography } from "@mui/material"
 import classes from '../assets/scss/modules/TiktokVideoInfo.module.scss';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import { useState } from "react";
 
 export type TiktokVideoInfoProps = {
     url: string
@@ -14,6 +15,8 @@ export type TiktokVideoInfoProps = {
 }
 
 export default function TiktokVideoInfo(props: TiktokVideoInfoProps) {
+    const [playPreview, setPlayPreview] = useState(false);
+
     return (
         <div className={classes.wrap}>
             <div className={classes.content}>
@@ -27,8 +30,16 @@ export default function TiktokVideoInfo(props: TiktokVideoInfoProps) {
                 </div>
                 <div className={classes.video}>
                     <div className={classes.cover}>
-                        <img src={props.cover} alt={`${props.author} - ${props.description}`}/>
-                        <PlayCircleOutlineIcon className={classes.actionIcon} fontSize="large" />
+                        {(
+                            playPreview
+                                ? <video controls autoPlay loop src={props.nwm}></video>
+                                : <>
+                                    <img src={props.cover} alt={`${props.author} - ${props.description}`}/>
+                                    <span onClick={() => { setPlayPreview(true) }}>
+                                        <PlayCircleOutlineIcon className={classes.actionIcon} fontSize="small" />
+                                    </span>
+                                </>
+                        )}
                     </div>
                     <div className={classes.info}>
                         <Typography className={classes.description}>

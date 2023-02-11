@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import axios from 'axios';
 import classes from '../assets/scss/modules/TiktokDownloader.module.scss';
 import CustomButton from './CustomButton';
 import CustomTextField from './CustomTextField';
@@ -7,13 +8,14 @@ import HistoryIcon from '@mui/icons-material/History';
 import SearchIcon from '@mui/icons-material/Search';
 import { CircularProgress, Typography } from '@mui/material';
 import { ApiResponse, Axios } from '../services/api/Axios';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import DownloadingIcon from '@mui/icons-material/Downloading';
 import TiktokVideoInfo, { TiktokVideoInfoProps } from './TiktokVideoInfo';
 
 export default function TiktokDownloader() {
     const [tiktokUrl, setTiktokUrl] = useState('');
+    const [isUsingPasteButton, setIsUsingPasteButton] = useState(false);
     const [tiktokVideoInfo, setTiktokVideoInfo] = useState<TiktokVideoInfoProps>();
     const [isOnLoading, setisOnLoading] = useState(false);
     const { enqueueSnackbar } = useSnackbar();
@@ -22,11 +24,25 @@ export default function TiktokDownloader() {
         setTiktokUrl(event.target.value);
     }
 
+    let pasteHandle = () => {
+        navigator.clipboard.readText().then(clipboardText => {
+            setTiktokUrl(clipboardText);
+            setIsUsingPasteButton(true);
+        });
+    };
+
+    useEffect(() => {
+        if (isUsingPasteButton) {
+            searchHandle();
+            setIsUsingPasteButton(false);
+        }
+    }, [isUsingPasteButton]);
+
     const downloadHandle = async () => {
         setisOnLoading(true);
 
-        Axios({
-            url: tiktokUrl,
+        axios({
+            url: tiktokVideoInfo?.nwm,
             method: "GET",
             responseType: "blob",
             headers: {
@@ -79,6 +95,7 @@ export default function TiktokDownloader() {
     return (
         <div className={clsx(classes.wrap)}>
             <CustomTextField
+                disabled={isOnLoading}
                 fullWidth
                 placeholder="Paste Tiktok URL here"
                 label="Tiktok Link"
@@ -86,7 +103,7 @@ export default function TiktokDownloader() {
                 onChange={handletiktokUrlChange}
             />
             <div className={clsx(classes.action)}>
-                <CustomButton>
+                <CustomButton disabled={isOnLoading}>
                     <HistoryIcon style={{ width: '1rem' }} />
                 </CustomButton>
                 <div className={clsx(classes.mainButton)}>
@@ -96,7 +113,7 @@ export default function TiktokDownloader() {
                         Search
                     </CustomButton>
                 </div>
-                <CustomButton>
+                <CustomButton disabled={isOnLoading} onClick={pasteHandle}>
                     <ContentPasteIcon style={{ width: '1rem' }} />
                 </CustomButton>
             </div>

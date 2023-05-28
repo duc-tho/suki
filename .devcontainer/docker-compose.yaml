@@ -1,0 +1,10 @@
+version: '3.9'
+
+name: suki
+services:
+    workspace:
+        build: ./Dockerfile
+        environment:
+            - NODE_VERSION=16
+
+

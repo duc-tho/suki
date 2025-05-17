@@ -1,12 +1,8 @@
 {
 	"name": "Suki dev container",
-	"dockerComposeFile": [
-		"./docker-compose.yaml"
-	],
+	"dockerComposeFile": "./docker-compose.yml",
 	"service": "workspace",
-	"workspaceFolder": "/workspaces/suki",
-	// "settings": {},
+	"workspaceFolder": "/workspace",
 	"postCreateCommand": "",
-    "shutdownAction":"stopCompose",
-	"extensions": []
+    "shutdownAction":"stopCompose"
 }

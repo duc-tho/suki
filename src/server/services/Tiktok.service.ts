@@ -38,18 +38,21 @@ export class TiktokService {
 
         await axios.get(`${CONFIGS.TIKTOK_API}${tiktokUrl}`, {
             headers: {
+                'accept': 'application/json',
                 "Accept-Encoding": "gzip,deflate,compress"
             }
         }).then((response: any) => {
+            const responseData = response.data.data;
+
             const returnDatas: TiktokAPIResponseData = {
-                url: response.data.url,
-                description: response.data.desc,
-                author: response.data.author.nickname,
-                avatar: response.data.author.avatar_thumb.url_list[0],
-                music: response.data.music.title,
-                cover: response.data.cover_data.dynamic_cover.url_list[0],
-                nwm: response.data.video_data.nwm_video_url,
-                wm: response.data.video_data.wm_video_url
+                url: tiktokUrl,
+                description: responseData.desc,
+                author: responseData.author.nickname,
+                avatar: responseData.author.avatar_thumb.url_list[0],
+                music: responseData.music.title,
+                cover: responseData.cover_data.dynamic_cover.url_list[0],
+                nwm: responseData.video_data.nwm_video_url,
+                wm: responseData.video_data.wm_video_url
             }
 
             result = ResponseUtils.createSuccessResult(statusCode.OK, returnDatas);

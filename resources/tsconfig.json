@@ -1,11 +1,15 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
+   "extends": "../tsconfig.json",
+   "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "node",
       "baseUrl": ".",
       "lib": ["DOM"],
-      "jsx": "preserve", // If you are using React
+      "jsx": "preserve",
       "paths": {
-        "@/*": ["./js/*"],
+         "@/*": ["./js/*"]
       }
-    }
-  }
+   },
+   "include": ["./js/**/*"],
+   "exclude": []
+}

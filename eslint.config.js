@@ -1,2 +1,16 @@
 import { configApp } from '@adonisjs/eslint-config'
-export default configApp()
+
+const defaultConfig = configApp()
+const defaultAdonisConfig = defaultConfig.find((config) => config.name === 'AdonisJS app defaults')
+
+if (defaultAdonisConfig) {
+   defaultAdonisConfig.ignores = defaultAdonisConfig.ignores.filter(
+      (ignore) => ignore !== 'resources/**'
+   )
+
+   defaultAdonisConfig.files = [...defaultAdonisConfig.files, '**/*.tsx']
+}
+
+console.log(defaultConfig[3].rules['prettier/prettier'])
+
+export default defaultConfig

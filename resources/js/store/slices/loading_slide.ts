@@ -1,21 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../index.js'
+import type { RootState } from '..'
 
 interface LoadingState {
-    open: boolean
+   open: boolean
 }
 
 const initialState: LoadingState = {
-    open: true,
+   open: true,
 }
 
 export const LoadingSlice = createSlice({
-    name: 'Loading',
-    initialState,
-    reducers: {
-        show: (state) => { state.open = true; },
-        hide: (state) => { state.open = false; }
-    }
+   name: 'Loading',
+   initialState,
+   reducers: {
+      show: (state) => {
+         state.open = true
+      },
+      hide: (state) => {
+         state.open = false
+      },
+   },
 })
 
 export const { show, hide } = LoadingSlice.actions

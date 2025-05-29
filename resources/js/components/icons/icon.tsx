@@ -6,7 +6,6 @@ export type IconProps = PropsWithChildren & {
    rotate?: boolean
    bounce?: boolean
    sizePx?: number
-   color?: string
 }
 
 export default function Icon({

@@ -1,27 +1,17 @@
-import Loading from './common/loading'
-import { Button } from './ui/button'
-import { useDispatch, useSelector } from '../store/hooks'
-import { hide, selectLoading, show } from '../store/slices/loading_slide'
 import Background from './common/background'
+import Loading from './common/loading'
+import Body from './layout/body'
+import Footer from './layout/footer'
+import Header from './layout/header'
 
-export const Main = () => {
-   const { open } = useSelector(selectLoading)
-   const dispatch = useDispatch()
-
-   return (
-      <>
-         <div className="border-primary bg-background relative flex min-h-dvh w-lg max-w-lg flex-col items-center justify-center overflow-hidden border-dashed sm:border-x">
-            <Button
-               className="absolute z-[999] cursor-pointer"
-               onClick={() => {
-                  dispatch(open ? hide() : show())
-               }}
-            >
-               Click me!
-            </Button>
-            <Loading />
-            <Background />
-         </div>
-      </>
-   )
-}
+export const Main = () => (
+   <div className="border-primary bg-background relative flex min-h-dvh w-lg max-w-lg flex-col items-center justify-center overflow-hidden border-dashed sm:border-x">
+      <div className="absolute z-20 flex h-full w-full flex-col items-center justify-center">
+         <Header />
+         <Body />
+         <Footer />
+      </div>
+      <Loading />
+      <Background />
+   </div>
+)

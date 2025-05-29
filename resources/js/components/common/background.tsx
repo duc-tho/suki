@@ -20,11 +20,8 @@ export default function Background() {
       backgroundUrl && (
          <div
             className={clsx(
-               'after:bg-background opacity-0 after:opacity-75',
-               isBackgroundLoaded &&
-                  'relative z-10 h-dvh w-full overflow-hidden' +
-                     'opacity-100 transition-opacity duration-300' +
-                     'after:absolute after:inset-0 after:z-20'
+               'after:bg-background relative z-10 h-dvh w-full overflow-hidden opacity-0 transition-opacity duration-300 after:absolute after:inset-0 after:z-20 after:opacity-75',
+               isBackgroundLoaded && 'pointer-none opacity-100'
             )}
          >
             <video

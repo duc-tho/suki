@@ -1,8 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Main } from './components/main'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Provider } from 'react-redux'
+import { RouterProvider } from 'react-router'
 import './bootstrap'
+import Error from './pages/error'
+import { router } from './router'
 import { store } from './store'
 
 const appElement = document.getElementById('app')
@@ -10,11 +13,13 @@ const appElement = document.getElementById('app')
 if (appElement) {
    createRoot(appElement).render(
       <StrictMode>
-         <Provider store={store}>
-            <div className="flex items-center justify-center">
-               <Main />
-            </div>
-         </Provider>
+         <ErrorBoundary FallbackComponent={() => <Error />}>
+            <Provider store={store}>
+               <div className="flex items-center justify-center">
+                  <RouterProvider router={router} />
+               </div>
+            </Provider>
+         </ErrorBoundary>
       </StrictMode>
    )
 } else {

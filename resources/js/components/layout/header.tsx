@@ -1,5 +1,5 @@
+import { findRouteByPath } from '@/lib/utils/route_util'
 import { defaultHomePath } from '@/pages/home'
-import { routes } from '@/router'
 import clsx from 'clsx'
 import { Link, useLocation } from 'react-router'
 import HomeIcon from '../icons/home_icon'
@@ -8,7 +8,7 @@ import { Button } from '../ui/button'
 export default function Header() {
    const location = useLocation()
    const normalizedPath = location?.pathname?.replace(/\/+$/, '') || defaultHomePath
-   const currentRoute = routes.find((route) => route.path === normalizedPath)
+   const currentRoute = findRouteByPath(location?.pathname)
    const pageName = currentRoute ? currentRoute.name : 'Trang'
 
    return (

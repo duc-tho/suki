@@ -1,4 +1,4 @@
-import BottomNavigation from './bottom_navigation'
+import BottomNavigation from '../common/bottom_navigation'
 
 export default function Footer() {
    return (

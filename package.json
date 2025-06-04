@@ -51,7 +51,8 @@
       "ts-node-maintained": "^10.9.5",
       "tw-animate-css": "^1.3.0",
       "typescript": "~5.8",
-      "vite": "^6.3.5"
+      "vite": "^6.3.5",
+      "vite-plugin-pwa": "^1.0.0"
    },
    "dependencies": {
       "@adonisjs/auth": "^9.4.0",

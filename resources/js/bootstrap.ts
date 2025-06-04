@@ -1,1 +1,1 @@
-import './lib/service_worker_register'
+// import './lib/service_worker_register'

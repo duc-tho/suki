@@ -9,4 +9,8 @@ export default class HomeController {
          version: appVersion,
       })
    }
+
+   public async reloadApp({ response }: HttpContext) {
+      return response.header('Clear-Site-Data', '"storage"').redirect('/')
+   }
 }

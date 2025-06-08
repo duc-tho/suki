@@ -1,3 +1,4 @@
+import { appVersion } from '#config/app'
 import adonisjs from '@adonisjs/vite/client'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -41,33 +42,19 @@ export default defineConfig({
             additionalManifestEntries: [
                {
                   url: '/',
-                  revision: 'v1',
+                  revision: appVersion,
                },
             ],
             globPatterns: [
                './*.{js,css,html,png,svg,ico,json}',
                './assets/app*.{js,css}',
                './assets/manifest.webmanifest',
-               './images/backgrounds/**/*.*',
+               './videos/backgrounds/**/*.*',
                './images/icons/**/*.*',
                './images/stickers/**/*.*',
+               './images/stickers/**/*.*',
             ],
-            runtimeCaching: [
-               {
-                  urlPattern: /\/videos\/backgrounds\/.*\.mp4$/,
-                  handler: 'CacheFirst',
-                  options: {
-                     cacheName: 'suki-video-cache',
-                     expiration: {
-                        maxEntries: 100,
-                        maxAgeSeconds: 60 * 60 * 24 * 365,
-                     },
-                     cacheableResponse: {
-                        statuses: [200],
-                     },
-                  },
-               },
-            ],
+            maximumFileSizeToCacheInBytes: 8000000,
             cleanupOutdatedCaches: true,
          },
          manifest: {

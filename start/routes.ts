@@ -21,4 +21,6 @@ router
    })
    .prefix('api')
 
+router.get('/reload-app', [HomeController, 'reloadApp'])
+
 router.on('/*').render('pages/home', { env })

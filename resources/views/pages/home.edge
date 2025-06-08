@@ -35,6 +35,22 @@
    </head>
    <body>
       <div id="app">
+         <div
+            id="error-message"
+            style="position:absolute;width:80vw;top:50%;left:50%;transform:translate(-50%,-50%);
+            display:none;justify-content:center;align-items:center;flex-direction:column;text-align:center;"
+         >
+            <span>Nếu bạn thấy thông báo này tức là app vẫn đang load do mạng chậm hoặc đã có lỗi xảy ra!</span>
+            <br />
+            <span>Hãy thử bấm vào dòng chữ bên dưới nha</span>
+            <br />
+            <a href="/reload-app">Tải lại trang</a>
+         </div>
+         <script>
+            setTimeout(function() {
+               document.getElementById("error-message").style.display = "flex";
+            }, 5e3);
+         </script>
       </div>
    </body>
 </html>

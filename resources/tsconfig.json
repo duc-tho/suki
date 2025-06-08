@@ -10,6 +10,6 @@
          "@/*": ["./js/*"]
       }
    },
-   "include": ["./js/**/*"],
+   "include": ["./js/**/*", "../vite-env.d.ts"],
    "exclude": []
 }

@@ -1,9 +1,10 @@
-import clsx from 'clsx'
-import SpinIcon from '../icons/spin_icon'
-import { useEffect, useState } from 'react'
 import { getRandomMenheraStickerUrl } from '@/lib/utils/sticker_util'
 import { useDispatch, useSelector } from '@/store/hooks'
 import { hide, selectLoading } from '@/store/slices/loading_slide'
+import { selectUpdateStatus } from '@/store/slices/update_status_slide'
+import clsx from 'clsx'
+import { useEffect, useState } from 'react'
+import SpinIcon from '../icons/spin_icon'
 
 const LOADING_HIDE_TIMEOUT = 1000 // milliseconds
 const RESET_STICKER_STATE_TIMEOUT = LOADING_HIDE_TIMEOUT + 300 // milliseconds
@@ -13,6 +14,7 @@ let resetStickerStateTimeoutId: NodeJS.Timeout | null = null
 
 export default function Loading() {
    const { open } = useSelector(selectLoading)
+   const { inUpdateProcess } = useSelector(selectUpdateStatus)
    const [isStickerLoaded, setIsStickerLoaded] = useState(false)
    const [sticker, setSticker] = useState<string>('')
    const [isLoading, setIsLoading] = useState(false)
@@ -102,8 +104,13 @@ export default function Loading() {
                />
             )}
          </div>
-         <div className="flex flex-wrap items-center justify-center">
-            <span>Đang tải</span>
+         <div
+            className={clsx(
+               'flex flex-wrap items-center justify-center',
+               inUpdateProcess && 'flex-col'
+            )}
+         >
+            <span>{inUpdateProcess ? 'Đang cập nhật phiên bản mới' : 'Đang tải'}</span>
             <pre>
                {' '}
                <SpinIcon rotate className="fill-foreground inline align-baseline" sizePx={12} />
@@ -114,7 +121,7 @@ export default function Loading() {
                   sizePx={12}
                />{' '}
             </pre>
-            <span>đợi xíu!!!</span>
+            <span>{inUpdateProcess ? 'Đợi xíu nhaa!!' : 'đợi xíu!!!'}</span>
          </div>
       </div>
    )

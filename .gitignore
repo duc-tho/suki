@@ -11,6 +11,8 @@ tmp
 
 # Frontend assets compiled code
 public/assets
+public/sw.js
+public/workbox*.js
 
 # Build tools specific
 npm-debug.log

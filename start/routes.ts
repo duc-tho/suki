@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { env } from 'node:process'
 const TikdownController = () => import('#controllers/tikdown_controller')
 const HomeController = () => import('#controllers/home_controller')
 
@@ -20,4 +21,4 @@ router
    })
    .prefix('api')
 
-router.on('/*').render('pages/home')
+router.on('/*').render('pages/home', { env })

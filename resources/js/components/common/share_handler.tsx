@@ -10,14 +10,23 @@ export const ShareHandler = () => {
    useEffect(() => {
       const urlPattern = /^https:\/\/(www\.)?(vt\.)?tiktok\.com\/.+/
       const url = searchParams.get('url')
-      const isValid = url && urlPattern.test(url)
+      const title = searchParams.get('title')
+      const text = searchParams.get('text')
 
-      if (!isValid) {
+      const data = [url, title, text]
+
+      if (!data || data.length === 0) {
+         navigate('/', { replace: true })
+      }
+
+      const targetUrl = data.find((item) => item && urlPattern.test(item))
+
+      if (!targetUrl) {
          navigate('/', { replace: true })
          return
       }
 
-      navigate(`${toolRoute.path}/${tikdownRoute.path}?url=${encodeURIComponent(url)}`, {
+      navigate(`${toolRoute.path}/${tikdownRoute.path}?url=${encodeURIComponent(targetUrl)}`, {
          replace: true,
       })
    }, [searchParams, navigate])

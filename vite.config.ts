@@ -94,20 +94,15 @@ export default defineConfig({
                   type: 'image\/png',
                },
                {
-                  src: 'logo.png',
-                  type: 'image/png',
-                  sizes: '490x490',
-               },
-               {
-                  src: '/logo.png',
+                  src: '\/logo.png',
                   type: 'image/png',
                   sizes: '490x490',
                },
             ],
             start_url: '/',
             display: 'standalone',
-            theme_color: '#272b30',
-            background_color: '#272b30',
+            theme_color: '#202027',
+            background_color: '#202027',
             share_target: {
                action: '/share',
                params: {

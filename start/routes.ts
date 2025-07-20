@@ -8,7 +8,6 @@
 */
 
 import router from '@adonisjs/core/services/router'
-import { env } from 'node:process'
 const TikdownController = () => import('#controllers/tikdown_controller')
 const HomeController = () => import('#controllers/home_controller')
 
@@ -23,4 +22,4 @@ router
 
 router.get('/reload-app', [HomeController, 'reloadApp'])
 
-router.on('/*').render('pages/home', { env })
+router.on('/*').render('pages/home')

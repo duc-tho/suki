@@ -48,7 +48,9 @@
          </div>
          <script>
             setTimeout(function() {
-               document.getElementById("error-message").style.display = "flex";
+               const errorMessageElement = document.getElementById("error-message");
+               if (!errorMessageElement) return;
+               errorMessageElement.style.display = "flex";
             }, 5e3);
          </script>
       </div>

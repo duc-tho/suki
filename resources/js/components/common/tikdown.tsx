@@ -1,6 +1,7 @@
 import { Route } from '@/router'
 import axios from 'axios'
 import { ChangeEvent, useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { toast } from 'sonner'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
@@ -20,6 +21,7 @@ export default function Tikdown() {
    const [selectedUrl, setSelectedUrl] = useState<string | null>(null)
    const [videoInfo, setVideoInfo] = useState<any>(null)
    const [isProcessing, setIsProcessing] = useState(false)
+   const [searchParams] = useSearchParams()
 
    const handleUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
@@ -62,7 +64,6 @@ export default function Tikdown() {
 
          const data = await response.json()
          setVideoInfo(data)
-         console.log(data)
       } catch (error) {
          console.error('Error fetching video info:', error)
          toast('Lỗi tải video!', {
@@ -144,6 +145,18 @@ export default function Tikdown() {
 
       fetchVideoInfo()
    }, [selectedUrl])
+
+   useEffect(() => {
+      const urlPattern = /^https:\/\/(www\.)?(vt\.)?tiktok\.com\/.+/
+      const url = searchParams.get('url')
+      const isValid = url && urlPattern.test(url)
+
+      if (!isValid) {
+         return
+      }
+
+      setUrlInput(url)
+   }, [searchParams])
 
    return (
       <div className="flex h-full flex-col gap-2">

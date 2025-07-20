@@ -108,6 +108,14 @@ export default defineConfig({
             display: 'standalone',
             theme_color: '#272b30',
             background_color: '#272b30',
+            share_target: {
+               action: '/share',
+               params: {
+                  title: 'title',
+                  text: 'text',
+                  url: 'url',
+               },
+            },
          },
       }),
    ],

@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import { createBrowserRouter, RouteObject } from 'react-router'
+import { ShareHandler } from './components/common/share_handler'
 import { Main } from './components/main'
 import { homeRoute } from './pages/home'
 import { notFoundRoute } from './pages/not_found'
@@ -18,5 +19,9 @@ export const router = createBrowserRouter([
       path: '/',
       Component: () => <Main />,
       children: routes,
+   },
+   {
+      path: '/share',
+      Component: () => <ShareHandler />,
    },
 ])

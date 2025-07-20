@@ -11,6 +11,4 @@ if (defaultAdonisConfig) {
    defaultAdonisConfig.files = [...defaultAdonisConfig.files, '**/*.tsx']
 }
 
-console.log(defaultConfig[3].rules['prettier/prettier'])
-
 export default defaultConfig

@@ -1,5 +1,10 @@
 import { store } from '@/store'
-import { disableRequireLoading, enableRequireLoading, hide } from '@/store/slices/loading_slide'
+import {
+   disableRequireLoading,
+   enableRequireLoading,
+   hide,
+   show,
+} from '@/store/slices/loading_slide'
 import { updateIdle, updateProcessing } from '@/store/slices/update_status_slide'
 import axios from 'axios'
 
@@ -36,6 +41,7 @@ export const checkForUpdate = async (): Promise<boolean | null> => {
 export const update = async () => {
    console.info('Start Update!')
 
+   store.dispatch(show())
    store.dispatch(enableRequireLoading())
    store.dispatch(updateProcessing())
 

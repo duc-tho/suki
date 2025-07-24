@@ -3,7 +3,7 @@ import { Secret } from '@adonisjs/core/helpers'
 import { defineConfig } from '@adonisjs/core/http'
 import app from '@adonisjs/core/services/app'
 
-export const appVersion = '1.0.7'
+export const appVersion = '1.0.8'
 
 /**
  * The app key is used for encrypting cookies, generating signed URLs,

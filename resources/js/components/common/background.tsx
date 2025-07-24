@@ -26,7 +26,7 @@ export default function Background() {
          >
             <video
                onLoadedData={handleVideoLoadedData}
-               className="absolute inset-0 h-full w-full object-cover"
+               className="absolute inset-0 min-h-dvh w-full object-cover"
                autoPlay
                loop
                muted
